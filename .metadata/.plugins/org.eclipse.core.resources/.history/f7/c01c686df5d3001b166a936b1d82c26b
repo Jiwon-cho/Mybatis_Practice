@@ -1,0 +1,17 @@
+package com.mybatis.model.service;
+
+import org.apache.ibatis.session.SqlSession;
+import static com.mybatis.common.getSession;
+
+public class MybatisService {
+	private  MybatisDao dao=new MybatisDao();
+	
+	public int insertStudent() {
+		//Connection을 가져와 전달, 관리
+		SqlSession session=getSession();
+		int result=dao.insertStudent();
+		
+		return result;
+	}
+
+}

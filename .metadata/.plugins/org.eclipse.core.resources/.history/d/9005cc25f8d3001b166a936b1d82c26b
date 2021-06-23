@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<configuration>
+	<!--DB에 대한 정보를 저장하는 태그 -->
+	<environments default="dev">
+		<environment id="dev">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver"
+					value="oracle.jdbc.driver.OracleDriver" />
+				<property name="url"
+					value="jdbc:oracle:thin:@localhost:1521:xe" />
+				<property name="username" value="student" />
+				<property name="password" value="student" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+	<!-- sql구문을 보관하는 있는 xml파일에 대한 위치정보를 알려주는 태그  -->
+	<mapper resource="/sql/student-mapper.xml"/>
+	</mappers>
+</configuration>

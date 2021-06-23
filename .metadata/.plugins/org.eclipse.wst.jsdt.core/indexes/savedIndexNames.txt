@@ -1,0 +1,10 @@
+INDEX VERSION 1.4+C:\Users\user\mybatiswrokspace\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2037212477.index
+2533809630.index
+2002744500.index
+1282653263.index
+1046275796.index
+2622035571.index
+1046275796.index
+3164547330.index
+162612129.index

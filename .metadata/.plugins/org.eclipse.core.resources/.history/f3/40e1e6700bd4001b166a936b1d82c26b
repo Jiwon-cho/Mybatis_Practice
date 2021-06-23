@@ -1,0 +1,60 @@
+package com.mybatis.model.vo;
+
+import java.util.Date;
+
+public class Student {
+	private String studentNo;
+	private String studentName;
+	private String StudentTel;
+	private String StudentAddr;
+	private Date reg_date;
+	public Student() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Student(String studentNo, String studentName, String studentTel, String studentAddr, Date reg_date) {
+		super();
+		this.studentNo = studentNo;
+		this.studentName = studentName;
+		StudentTel = studentTel;
+		StudentAddr = studentAddr;
+		this.reg_date = reg_date;
+	}
+	public String getStudentNo() {
+		return studentNo;
+	}
+	public void setStudentNo(String studentNo) {
+		this.studentNo = studentNo;
+	}
+	public String getStudentName() {
+		return studentName;
+	}
+	public void setStudentName(String studentName) {
+		this.studentName = studentName;
+	}
+	public String getStudentTel() {
+		return StudentTel;
+	}
+	public void setStudentTel(String studentTel) {
+		StudentTel = studentTel;
+	}
+	public String getStudentAddr() {
+		return StudentAddr;
+	}
+	public void setStudentAddr(String studentAddr) {
+		StudentAddr = studentAddr;
+	}
+	public Date getReg_date() {
+		return reg_date;
+	}
+	public void setReg_date(Date reg_date) {
+		this.reg_date = reg_date;
+	}
+	@Override
+	public String toString() {
+		return "Student [studentNo=" + studentNo + ", studentName=" + studentName + ", StudentTel=" + StudentTel
+				+ ", StudentAddr=" + StudentAddr + ", reg_date=" + reg_date + "]";
+	}
+	
+	
+}

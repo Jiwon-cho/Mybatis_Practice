@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="student">
+ 	<insert id="insertStudent">
+ 		INSERT INTO STUDENT VALUES(SEQ_STUDENT.NEXTVAL,'유병승','01012341234','TEST@TEST.COM','경기도시흥시',DEFAULT)
+ 	</insert>
+ 	
+ 	<insert id="insertStudentName" parameterType="string">
+ 	 		INSERT INTO STUDENT VALUES(SEQ_STUDENT.NEXTVAL,#{name},'01012341234','TEST@TEST.COM','경기도시흥시',DEFAULT)
+ 	
+ 	</insert>
+ 	<insert id="insertStudentData" parameterType="com.mybatis.model.vo.Student">
+ 		INSERT INTO STUDENT VALUES(SEQ_STUDENT.NEXTVAL,#{studentName},#{studentTel},'TEST@TEST.COM',#{studentAddr},DEFAULT)
+
+ 	</insert>
+ 	<update id="updateStudent" parameterType="com.mybatis.model.vo.Student">
+ 		UPDATE STUDENT SET STUDENT_EMAIL=#{studentEmail},STUDENT_TEL=${studentTel},STUDENT_ADDR=#{studentAddr} WHERE STUDENT_NO=#{studentNo}
+ 	</update>
+ 	
+ 	
+</mapper>
