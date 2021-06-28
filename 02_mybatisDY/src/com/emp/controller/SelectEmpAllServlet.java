@@ -31,17 +31,78 @@ public class SelectEmpAllServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.setAttribute("list",new EmpService().selectEmpAll());
-		request.getRequestDispatcher("/views/emp/empList.jsp").forward(request, response);
-	
-		/*
-		 * Employee e=new Employee()
-		 */	
-		/*
-		 * Employee e=Employee.builder().empId("300").empName("조지원").build();
-		 */	
+		
+		int cPage;
+		int numPerpage=5;
+		try {
+			cPage=Integer.parseInt(request.getParameter("cPage"));
+		}catch(NumberFormatException e) {
+			cPage=1;
 		}
+		
+		int totalData=new EmpService().selectEmpCount();
+		int totalPage=(int)(Math.ceil((double)totalData/numPerpage));
+		
+		int pageBarSize=5;
+		int pageNo=((cPage-1)/pageBarSize)*pageBarSize+1;
+		int pageEnd=pageNo+pageBarSize-1;
+		
+		String pageBar="<ul class='pagination justify-content-center pagination-sm'>";
+		if(pageNo==1) {
+			pageBar+="<li class='page-item disabled'>";
+			pageBar+="<a class='page-link' href='#' tabindex='-1'>이전</a>";
+			pageBar+="</li>";
+		}else {
+			pageBar+="<li class='page-item'>";
+			pageBar+="<a class='page-link' href='javascript:fn_paging("+(pageNo-1)+")'>이전</a>";
+			pageBar+="</li>";
+		}
+		
+		while(!(pageNo>pageEnd||pageNo>totalPage)) {
+			if(cPage==pageNo) {
+				pageBar+="<li class='page-item active'>";
+				pageBar+="<a class='page-link'>"+pageNo+"</a>";
+				pageBar+="</li>";
+			}else {
+				pageBar+="<li class='page-item'>";
+				pageBar+="<a class='page-link' href='javascript:fn_paging("+(pageNo)+")'>"+pageNo+"</a>";
+				pageBar+="</li>";
+			}
+			pageNo++;
+		}
+		
+		if(pageNo>totalPage) {
+			pageBar+="<li class='page-item disabled'>";
+			pageBar+="<a class='page-link' href='#' tabindex='-1'>다음</a>";
+			pageBar+="</li>";
+		}else {
+			pageBar+="<li class='page-item'>";
+			pageBar+="<a class='page-link' href='javascript:fn_paging("+(pageNo)+")'>다음</a>";
+			pageBar+="</li>";
+		}
+		pageBar+="</ul>";
+		pageBar+="<script>";
+		pageBar+="function fn_paging(cPage){";
+		pageBar+="location.assign('"+request.getRequestURI()+"?cPage='+cPage)";
+		pageBar+="}";
+		pageBar+="</script>";
+		
+		request.setAttribute("list", new EmpService().selectEmpAll(cPage,numPerpage));
+		request.setAttribute("pageBar", pageBar);
+		
+		//Employee e=new Employee(asld)
+		/*
+		 * Employee e=Employee.builder().empId("300")
+		 * .empName("유병승").empNo("1234-1234").build();
+		 */
+		
+		
+		request.getRequestDispatcher("/views/emp/empList.jsp")
+		.forward(request, response);
 	
+	
+	
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

@@ -1,5 +1,7 @@
 package com.emp.model.vo;
 
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,8 +30,10 @@ public class Employee {
 	private String dept_Code;
 	private String job_Code;
 	private String sal_Level;
-	private int Salary;
+	private int salary;
 	private double bonus;
 	private String manager_Id;
+	private Date hire_date;
+	private String gender;
 	
 }
