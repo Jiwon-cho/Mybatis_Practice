@@ -8,6 +8,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import com.emp.model.dao.EmpDao;
+import com.emp.model.vo.Board;
 import com.emp.model.vo.Employee;
 import com.emp.model.vo.Employee2;
 public class EmpService {
@@ -44,5 +45,11 @@ public class EmpService {
 		return e;
 	}
 	
+	public Board selectBoard(int no) {
+		SqlSession session=getSession();
+		Board b=dao.selectBoard(session,no);
+		session.close();
+		return b;
+	}
 	
 }

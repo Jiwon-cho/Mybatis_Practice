@@ -9,19 +9,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.emp.model.service.EmpService;
-import com.emp.model.vo.Employee2;
+import com.emp.model.vo.Board;
 
 /**
- * Servlet implementation class SelectOneEmpServlet
+ * Servlet implementation class BoardSelectServlet
  */
-@WebServlet("/selectOneEmp")
-public class SelectOneEmpServlet extends HttpServlet {
+@WebServlet("/selectBoard")
+public class BoardSelectServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SelectOneEmpServlet() {
+    public BoardSelectServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,13 +31,11 @@ public class SelectOneEmpServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
-		String no=request.getParameter("no");
-		Employee2 e=new EmpService().selectEmpOne(no);
-		System.out.println(e);
+		int no=Integer.parseInt(request.getParameter("no"));
+		Board b=new EmpService().selectBoard(no);
 		
-		request.setAttribute("e", e);
-		request.getRequestDispatcher("/views/emp/emp.jsp").forward(request, response);
+		request.setAttribute("board", b);
+		request.getRequestDispatcher("/views/emp/board.jsp").forward(request, response);
 	}
 
 	/**

@@ -12,6 +12,6 @@
 	<h2>전체사원조회하기</h2>
 	<a href="${pageContext.request.contextPath }/selectEmpAll">전체 사원 출력</a>
 	<a href="${pageContext.request.contextPath }/selectOneEmp?no=200">사원조회</a>
-	
+	<a href="${pageContext.request.contextPath }/selectBoard?no=33">게시글 조회</a>
 </body>
 </html>
